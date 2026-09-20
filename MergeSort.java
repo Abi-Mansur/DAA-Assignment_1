@@ -26,5 +26,44 @@ public class MergeSort {
     }
 
 
+    private static void merge(int[] a, int[] temp, int low, int mid, int high, Metrics metrics) {
 
+        for (int k = low; k <= high; k++) {
+            temp[k] = a[k];
+        }
+
+        int i = low, j = mid + 1;
+        for (int k = low; k <= high; k++) {
+            if (i > mid) {
+                a[k] = temp[j++];
+            } else if (j > high) {
+                a[k] = temp[i++];
+            } else {
+                metrics.addComparison();
+                if (temp[j] < temp[i]) {
+                    a[k] = temp[j++];
+                } else {
+                    a[k] = temp[i++];
+                }
+            }
+        }
+    }
+
+
+    private static void insertionSort(int[] a, int low, int high, Metrics metrics) {
+        for (int i = low + 1; i <= high; i++) {
+            int key = a[i];
+            int j = i - 1;
+            while (j >= low) {
+                metrics.addComparison();
+                if (a[j] > key) {
+                    a[j + 1] = a[j];
+                    j--;
+                } else {
+                    break;
+                }
+            }
+            a[j + 1] = key;
+        }
+    }
 }
