@@ -7,6 +7,7 @@ public class QuickSort {
         if (a == null || a.length <= 1) return;
         sort(a, 0, a.length - 1, metrics);
     }
+
     private static void sort(int[] a, int low, int high, Metrics metrics) {
         while (low < high) {
 
@@ -57,3 +58,4 @@ public class QuickSort {
         a[i] = a[j];
         a[j] = temp;
     }
+}
